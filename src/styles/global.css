@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+}
+
+.page {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
