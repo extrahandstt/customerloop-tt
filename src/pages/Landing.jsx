@@ -5,7 +5,14 @@ export default function Landing() {
     <div style={{ fontFamily: "Arial, sans-serif", color: "#111" }}>
 
       {/* HERO */}
-      <section style={{ padding: "70px 20px", textAlign: "center", background: "#172139", color: "white" }}>
+      <section
+  style={{
+    padding: "clamp(50px, 10vw, 90px) 20px",
+    textAlign: "center",
+    background: "#172139",
+    color: "white"
+  }}
+>
         <button
   onClick={() => {
     if (window.deferredPrompt) {
@@ -26,11 +33,26 @@ export default function Landing() {
 >
   📲 Download CustomerLoop
 </button>
-        <h1 style={{ fontSize: "44px", fontWeight: "800", marginBottom: "15px" }}>
+        <h1
+  style={{
+    fontSize: "clamp(28px, 6vw, 44px)",
+    fontWeight: "800",
+    marginBottom: "15px",
+    lineHeight: "1.2"
+  }}
+>
           Stop Losing Customers After Their First Visit
         </h1>
 
-        <p style={{ fontSize: "18px", maxWidth: "700px", margin: "0 auto", opacity: 0.9 }}>
+        <p
+  style={{
+    fontSize: "clamp(14px, 3.5vw, 18px)",
+    maxWidth: "700px",
+    margin: "0 auto",
+    opacity: 0.95,
+    lineHeight: "1.5"
+  }}
+>
           CustomerLoop TT helps small businesses automatically follow up with customers so they come back and buy again.
         </p>
 
@@ -50,14 +72,21 @@ export default function Landing() {
           </Link>
         </div>
 
-        <p style={{ marginTop: "10px", fontSize: "12px", opacity: 0.7 }}>
+        <p style={{ marginTop: "10px", fontSize: "12px", color: "#333" }}>
           One-time setup • Built for small businesses in Trinidad & Tobago
         </p>
       </section>
 
       {/* PROBLEM */}
       <section style={{ padding: "60px 20px", background: "#f9fafb" }}>
-        <h2 style={{ textAlign: "center", fontSize: "28px" }}>
+        <h2
+  style={{
+    textAlign: "center",
+    fontSize: "clamp(20px, 5vw, 28px)",
+    fontWeight: "700",
+    color: "#111"
+  }}
+>
           The Problem Most Businesses Don’t Notice
         </h2>
 
@@ -70,7 +99,14 @@ export default function Landing() {
 
       {/* SOLUTION */}
       <section style={{ padding: "60px 20px" }}>
-        <h2 style={{ textAlign: "center", fontSize: "28px" }}>
+        <h2
+  style={{
+    textAlign: "center",
+    fontSize: "clamp(20px, 5vw, 28px)",
+    fontWeight: "700",
+    color: "#111"
+  }}
+>
           CustomerLoop Fixes This Automatically
         </h2>
 
@@ -84,7 +120,14 @@ export default function Landing() {
 
       {/* HOW IT WORKS */}
       <section style={{ padding: "60px 20px", background: "#f9fafb" }}>
-        <h2 style={{ textAlign: "center", fontSize: "28px" }}>
+        <h2
+  style={{
+    textAlign: "center",
+    fontSize: "clamp(20px, 5vw, 28px)",
+    fontWeight: "700",
+    color: "#111"
+  }}
+>
           How It Works
         </h2>
 
@@ -99,7 +142,7 @@ export default function Landing() {
       {/* WHO IT'S FOR */}
       <section style={{ padding: "60px 20px", textAlign: "center" }}>
         <h2>Built for Small Businesses</h2>
-        <p style={{ marginTop: "10px", opacity: 0.7 }}>
+        <p style={{ marginTop: "10px", color: "#000000" }}>
           Barbers • Salons • Retail Stores • Car Washes • Freelancers • Service Providers
         </p>
       </section>
@@ -144,7 +187,7 @@ export default function Landing() {
       {/* FINAL CTA */}
       <section style={{ padding: "60px 20px", textAlign: "center" }}>
         <h2>Start Recovering Lost Customers Today</h2>
-        <p style={{ opacity: 0.7 }}>
+        <p style={{ color: "#333" }}>
           Stop guessing. Start following up automatically.
         </p>
 
