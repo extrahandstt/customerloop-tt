@@ -161,13 +161,17 @@ export default function Landing() {
             🚀 Get Started
           </button>
         </Link>
+        <footer style={{ padding: "30px", textAlign: "center", fontSize: "12px", color: "#777" }}>
+  <p>CustomerLoop TT © {new Date().getFullYear()}</p>
+
+  <div style={{ marginTop: "10px" }}>
+    <a href="/privacy" style={{ marginRight: "10px" }}>Privacy Policy</a>
+    <a href="/refund" style={{ marginRight: "10px" }}>Refund Policy</a>
+    <a href="/terms">Terms</a>
+  </div>
+</footer>
       </section>
 
-      {/* FOOTER */}
-      <footer style={{ padding: "30px", textAlign: "center", fontSize: "12px", color: "#777" }}>
-        CustomerLoop TT © {new Date().getFullYear()}
-      </footer>
-
-    </div>
+          </div>
   );
 }
