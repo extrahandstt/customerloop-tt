@@ -7,32 +7,50 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignup, setIsSignup] = useState(false);
+const [businessName, setBusinessName] = useState("");
 
   const handleAuth = async () => {
+
   if (isSignup) {
+
+    if (!businessName?.trim()) {
+      alert("Please enter your business name");
+      return;
+    }
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
     });
-
-    console.log(data);
-    console.log(error);
 
     if (error) {
       alert(error.message);
       return;
     }
 
-    alert("Account created sucessfully");
+    if (data.user) {
+      const { error: profileError } = await supabase
+        .from("business_profiles")
+        .insert({
+          user_id: data.user.id,
+          business_name: businessName,
+          trial_start: new Date().toISOString(),
+        });
+
+      if (profileError) {
+        console.log(profileError);
+        alert(profileError.message);
+        return;
+      }
+    }
+
+    alert("Account created successfully!");
   } else {
     const { data, error } =
       await supabase.auth.signInWithPassword({
         email,
         password,
       });
-
-    console.log(data);
-    console.log(error);
 
     if (error) {
       alert(error.message);
@@ -92,7 +110,13 @@ const isTrialActive = (trialStart) => {
 
         <div style={styles.card}>
           <h2>{isSignup ? "Create Account" : "Login"}</h2>
-
+{isSignup && (
+  <input
+    placeholder="Business Name"
+    value={businessName}
+    onChange={(e) => setBusinessName(e.target.value)}
+  />
+)}
           <input
             placeholder="Email"
             value={email}
