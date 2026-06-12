@@ -8,7 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [isSignup, setIsSignup] = useState(false);
 const [businessName, setBusinessName] = useState("");
-
+const [businessType, setBusinessType] = useState("");
   const handleAuth = async () => {
 
   if (isSignup) {
@@ -17,7 +17,10 @@ const [businessName, setBusinessName] = useState("");
       alert("Please enter your business name");
       return;
     }
-
+if (!businessType) {
+  alert("Please select a business type");
+  return;
+}
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -30,18 +33,19 @@ const [businessName, setBusinessName] = useState("");
 
     if (data.user) {
       const { error: profileError } = await supabase
-        .from("business_profiles")
-        .insert({
-          user_id: data.user.id,
-          business_name: businessName,
-          trial_start: new Date().toISOString(),
-        });
+  .from("business_profiles")
+  .insert({
+    user_id: data.user.id,
+    business_name: businessName,
+    business_type: businessType,
+    trial_start: new Date().toISOString(),
+  });
+console.log("PROFILE ERROR:", profileError);
 
-      if (profileError) {
-        console.log(profileError);
-        alert(profileError.message);
-        return;
-      }
+if (profileError) {
+  alert(profileError.message);
+  return;
+}
     }
 
     alert("Account created successfully!");
@@ -114,8 +118,23 @@ const isTrialActive = (trialStart) => {
   <input
     placeholder="Business Name"
     value={businessName}
-    onChange={(e) => setBusinessName(e.target.value)}
-  />
+        onChange={(e) => setBusinessName(e.target.value)}
+      />
+      
+)}
+{isSignup && (
+  <select
+    value={businessType}
+    onChange={(e) => setBusinessType(e.target.value)}
+  >
+    <option value="">Select Business Type</option>
+    <option value="Retail">Retail</option>
+    <option value="Restaurant">Restaurant</option>
+    <option value="Salon">Salon</option>
+    <option value="Auto Services">Auto Services</option>
+    <option value="Professional Services">Professional Services</option>
+    <option value="Other">Other</option>
+  </select>
 )}
           <input
             placeholder="Email"
