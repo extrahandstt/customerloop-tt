@@ -222,6 +222,7 @@ export default function Landing() {
     <a href="/terms">Terms</a>
   </div>
 </footer>
+
       </section>
 
           </div>
