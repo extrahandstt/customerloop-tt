@@ -14,6 +14,7 @@ import Terms from "./pages/Terms";
 import CrmTrinidad from "./pages/seo/CrmTrinidad";
 import CustomerManagementTrinidad from "./pages/seo/CustomerManagementTrinidad";
 import WhatsappAutomationTrinidad from "./pages/seo/WhatsappAutomationTrinidad";
+import BusinessHubTrinidad from "./pages/seo/BusinessHubTrinidad";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
 <Route path="/refund" element={<RefundPolicy />} />
 <Route path="/terms" element={<Terms />} />
+<Route path="/business-growth-trinidad" element={<BusinessHubTrinidad />} />
 <Route path="/crm-trinidad" element={<CrmTrinidad />} />
 <Route
   path="/customer-management-software-trinidad"

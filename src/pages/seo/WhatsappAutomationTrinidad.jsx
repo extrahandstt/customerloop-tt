@@ -80,6 +80,7 @@ export default function WhatsappAutomationTrinidad() {
           Customer Management Software
         </a>
         {" | "}
+        <a href="/business-growth-trinidad">Back to Business Hub</a>
         <a href="/">
           Home
         </a>

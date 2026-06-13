@@ -44,6 +44,7 @@ export default function CustomerManagementTrinidad() {
   <a href="/whatsapp-business-automation-trinidad">
     WhatsApp Automation TT
   </a>
+  <a href="/business-growth-trinidad">Back to Business Hub</a>
 </div>
     </div>
   );
