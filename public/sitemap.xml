@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://customerloop-tt.vercel.app/</loc>
   </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/business-growth-trinidad</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/crm-trinidad</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/customer-management-trinidad</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/whatsapp-business-automation-trinidad</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/how-to-get-more-customers-trinidad</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/how-to-follow-up-customers-whatsapp-trinidad</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/why-businesses-lose-customers-trinidad</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/pricing</loc>
+  </url>
+
 </urlset>
