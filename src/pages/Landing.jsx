@@ -1,68 +1,66 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
-  <meta
-    name="description"
-    content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
-  />
-</Helmet>
-
 export default function Landing() {
   return (
     <div style={{ fontFamily: "Arial, sans-serif", color: "#111" }}>
 
+      {/* SEO MUST BE INSIDE COMPONENT */}
+      <Helmet>
+        <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
+        <meta
+          name="description"
+          content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
+        />
+      </Helmet>
+
       {/* HERO */}
       <section
-  style={{
-    padding: "clamp(50px, 10vw, 90px) 20px",
-    textAlign: "center",
-    background: "#172139",
-    color: "white"
-  }}
->
+        style={{
+          padding: "clamp(50px, 10vw, 90px) 20px",
+          textAlign: "center",
+          background: "#172139",
+          color: "white"
+        }}
+      >
         <button
-  onClick={() => {
-    if (window.deferredPrompt) {
-      window.deferredPrompt.prompt();
-    } else {
-      alert("Install option will appear in your browser menu (Add to Home Screen).");
-    }
-  }}
-  style={{
-    marginTop: "15px",
-    padding: "12px 18px",
-    borderRadius: "8px",
-    border: "1px solid white",
-    background: "transparent",
-    color: "white",
-    cursor: "pointer",
-  }}
->
-  📲 Download CustomerLoop
-</button>
-        <h1
-  style={{
-    fontSize: "clamp(28px, 6vw, 44px)",
-    fontWeight: "800",
-    marginBottom: "15px",
-    lineHeight: "1.2"
-  }}
->
+          onClick={() => {
+            if (window.deferredPrompt) {
+              window.deferredPrompt.prompt();
+            } else {
+              alert("Install option will appear in your browser menu.");
+            }
+          }}
+          style={{
+            marginTop: "15px",
+            padding: "12px 18px",
+            borderRadius: "8px",
+            border: "1px solid white",
+            background: "transparent",
+            color: "white",
+            cursor: "pointer",
+          }}
+        >
+          📲 Download CustomerLoop
+        </button>
+
+        <h1 style={{
+          fontSize: "clamp(28px, 6vw, 44px)",
+          fontWeight: "800",
+          marginBottom: "15px",
+          lineHeight: "1.2"
+        }}>
           Stop Losing Customers After Their First Visit
         </h1>
 
-        <p
-  style={{
-    fontSize: "clamp(14px, 3.5vw, 18px)",
-    maxWidth: "700px",
-    margin: "0 auto",
-    opacity: 0.95,
-    lineHeight: "1.5"
-  }}
->
-          CustomerLoop TT helps small businesses automatically follow up with customers so they come back and buy again.
+        <p style={{
+          fontSize: "clamp(14px, 3.5vw, 18px)",
+          maxWidth: "700px",
+          margin: "0 auto",
+          opacity: 0.95,
+          lineHeight: "1.5"
+        }}>
+          CustomerLoop TT is a CRM software for small businesses in Trinidad & Tobago that helps you track customers, automate follow-ups, and increase repeat sales.
         </p>
 
         <div style={{ marginTop: "25px" }}>
@@ -76,89 +74,60 @@ export default function Landing() {
               cursor: "pointer"
             }}>
               🚀 Start 14-Day Free Trial
-              No credit card required • Full access included
             </button>
           </Link>
         </div>
-
-        <p style={{ marginTop: "10px", fontSize: "12px", color: "#333" }}>
-          One-time setup • Built for small businesses in Trinidad & Tobago
-        </p>
       </section>
 
       {/* PROBLEM */}
       <section style={{ padding: "60px 20px", background: "#f9fafb" }}>
-        <h2
-  style={{
-    textAlign: "center",
-    fontSize: "clamp(20px, 5vw, 28px)",
-    fontWeight: "700",
-    color: "#111"
-  }}
->
+        <h2 style={{ textAlign: "center" }}>
           The Problem Most Businesses Don’t Notice
         </h2>
 
         <div style={{ maxWidth: "800px", margin: "30px auto", lineHeight: "1.8" }}>
           <p>❌ Customers visit once and never return</p>
-          <p>❌ No system to remind you to follow up</p>
-          <p>❌ Lost sales every single week</p>
+          <p>❌ No system to follow up with customers</p>
+          <p>❌ Lost sales every week</p>
         </div>
       </section>
 
       {/* SOLUTION */}
       <section style={{ padding: "60px 20px" }}>
-        <h2
-  style={{
-    textAlign: "center",
-    fontSize: "clamp(20px, 5vw, 28px)",
-    fontWeight: "700",
-    color: "#111"
-  }}
->
+        <h2 style={{ textAlign: "center" }}>
           CustomerLoop Fixes This Automatically
         </h2>
 
         <div style={{ maxWidth: "800px", margin: "30px auto", lineHeight: "1.8" }}>
           <p>✔ Add a customer once</p>
-          <p>✔ System creates follow-up reminders</p>
-          <p>✔ Get daily tasks of who to message</p>
-          <p>✔ Send WhatsApp reminders in seconds</p>
+          <p>✔ Get automatic follow-up reminders</p>
+          <p>✔ Track all customers in one place</p>
+          <p>✔ Send WhatsApp reminders easily</p>
         </div>
       </section>
 
       {/* HOW IT WORKS */}
       <section style={{ padding: "60px 20px", background: "#f9fafb" }}>
-        <h2
-  style={{
-    textAlign: "center",
-    fontSize: "clamp(20px, 5vw, 28px)",
-    fontWeight: "700",
-    color: "#111"
-  }}
->
-          How It Works
-        </h2>
+        <h2 style={{ textAlign: "center" }}>How It Works</h2>
 
-        <div style={{ maxWidth: "700px", margin: "30px auto", lineHeight: "1.8" }}>
-          <p>1. Add your customer</p>
-          <p>2. Set last interaction date</p>
-          <p>3. System schedules follow-ups automatically</p>
-          <p>4. You get reminders every day</p>
+        <div style={{ maxWidth: "700px", margin: "30px auto" }}>
+          <p>1. Add customer</p>
+          <p>2. Set follow-up timing</p>
+          <p>3. Get daily reminders</p>
         </div>
       </section>
 
       {/* WHO IT'S FOR */}
       <section style={{ padding: "60px 20px", textAlign: "center" }}>
         <h2>Built for Small Businesses</h2>
-        <p style={{ marginTop: "10px", color: "#000000" }}>
-          Barbers • Salons • Retail Stores • Car Washes • Freelancers • Service Providers
+        <p>
+          Barbers • Salons • Shops • Car Washes • Freelancers • Service Providers
         </p>
       </section>
 
       {/* PRICING */}
       <section style={{ padding: "60px 20px", background: "#18233d", color: "white", textAlign: "center" }}>
-        <h2>Lifetime Early Access</h2>
+        <h2>Lifetime Access</h2>
 
         <div style={{
           marginTop: "20px",
@@ -167,14 +136,13 @@ export default function Landing() {
           border: "2px solid #f5c542",
           borderRadius: "10px"
         }}>
-          <h1 style={{ fontSize: "40px" }}>$249 TTD</h1>
-          <p>One-time payment — no monthly fees</p>
+          <h1>$249 TTD</h1>
+          <p>One-time payment</p>
 
-          <div style={{ textAlign: "left", marginTop: "15px", lineHeight: "1.8" }}>
+          <div style={{ textAlign: "left", marginTop: "15px" }}>
             <p>✔ Unlimited customers</p>
             <p>✔ Follow-up automation</p>
             <p>✔ WhatsApp reminders</p>
-            <p>✔ All future updates</p>
           </div>
 
           <Link to="/login">
@@ -184,10 +152,9 @@ export default function Landing() {
               background: "#f5c542",
               border: "none",
               borderRadius: "8px",
-              fontWeight: "700",
-              cursor: "pointer"
+              fontWeight: "700"
             }}>
-              Get Access Now
+              Get Access
             </button>
           </Link>
         </div>
@@ -196,9 +163,6 @@ export default function Landing() {
       {/* FINAL CTA */}
       <section style={{ padding: "60px 20px", textAlign: "center" }}>
         <h2>Start Recovering Lost Customers Today</h2>
-        <p style={{ color: "#333" }}>
-          Stop guessing. Start following up automatically.
-        </p>
 
         <Link to="/login">
           <button style={{
@@ -207,24 +171,24 @@ export default function Landing() {
             background: "linear-gradient(135deg, #f5c542, #d4a017)",
             border: "none",
             borderRadius: "8px",
-            fontWeight: "700",
-            cursor: "pointer"
+            fontWeight: "700"
           }}>
-            🚀 Get Started
+            Get Started
           </button>
         </Link>
-        <footer style={{ padding: "30px", textAlign: "center", fontSize: "12px", color: "#777" }}>
-  <p>CustomerLoop TT © {new Date().getFullYear()}</p>
-
-  <div style={{ marginTop: "10px" }}>
-    <a href="/privacy" style={{ marginRight: "10px" }}>Privacy Policy</a>
-    <a href="/refund" style={{ marginRight: "10px" }}>Refund Policy</a>
-    <a href="/terms">Terms</a>
-  </div>
-</footer>
-
       </section>
 
-          </div>
+      {/* FOOTER */}
+      <footer style={{ padding: "30px", textAlign: "center", fontSize: "12px", color: "#777" }}>
+        <p>CustomerLoop TT © {new Date().getFullYear()}</p>
+
+        <div>
+          <a href="/privacy-policy">Privacy Policy</a> |{" "}
+          <a href="/refund-policy">Refund Policy</a> |{" "}
+          <a href="/terms">Terms</a>
+        </div>
+      </footer>
+
+    </div>
   );
 }
