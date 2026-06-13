@@ -6,4 +6,4 @@ Disallow: /login
 Disallow: /dashboard
 
 # Sitemap location (IMPORTANT)
-Sitemap: https://https://customerloop-tt.vercel.app//sitemap.xml
+Sitemap: https://customerloop-tt.vercel.app/sitemap.xml
