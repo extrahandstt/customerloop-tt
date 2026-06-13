@@ -2,6 +2,15 @@ import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
+  <meta
+    name="description"
+    content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
+  />
+</Helmet>
 
 
 export default function Dashboard() {

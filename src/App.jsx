@@ -11,6 +11,10 @@ import Landing from "./pages/Landing";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import Terms from "./pages/Terms";
+import CrmTrinidad from "./pages/seo/CrmTrinidad";
+import CustomerManagementTrinidad from "./pages/seo/CustomerManagementTrinidad";
+import WhatsappAutomationTrinidad from "./pages/seo/WhatsappAutomationTrinidad";
+
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +28,15 @@ function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
 <Route path="/refund" element={<RefundPolicy />} />
 <Route path="/terms" element={<Terms />} />
+<Route path="/crm-trinidad" element={<CrmTrinidad />} />
+<Route
+  path="/customer-management-software-trinidad"
+  element={<CustomerManagementTrinidad />}
+/>
+<Route
+  path="/whatsapp-business-automation-trinidad"
+  element={<WhatsappAutomationTrinidad />}
+/>
         
         <Route
   path="/customer/:id"
