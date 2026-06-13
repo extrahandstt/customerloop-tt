@@ -1,9 +1,4 @@
 User-agent: *
 Allow: /
 
-# Block sensitive/internal pages (optional but good practice)
-Disallow: /login
-Disallow: /dashboard
-
-# Sitemap location (IMPORTANT)
 Sitemap: https://customerloop-tt.vercel.app/sitemap.xml
