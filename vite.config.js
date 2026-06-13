@@ -1,10 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
+import sitemap from "vite-plugin-sitemap";
 
 export default defineConfig({
   plugins: [
     react(),
+
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: "auto",
@@ -20,28 +22,30 @@ export default defineConfig({
             src: "/pwa-192.png",
             sizes: "192x192",
             type: "image/png",
+            purpose: "any maskable"
           },
           {
             src: "/pwa-512.png",
             sizes: "512x512",
             type: "image/png",
-          },
-        ],
-      },
+            purpose: "any maskable"
+          }
+        ]
+      }
     }),
-  ],
-  icons: [
-  {
-    src: "/pwa-192.png",
-    sizes: "192x192",
-    type: "image/png",
-    purpose: "any maskable",
-  },
-  {
-    src: "/pwa-512.png",
-    sizes: "512x512",
-    type: "image/png",
-    purpose: "any maskable",
-  },
-]
+
+    sitemap({
+      hostname: "https://customerloop-tt.vercel.app",
+      routes: [
+        "/",
+        "/login",
+        "/crm-trinidad",
+        "/customer-management-software-trinidad",
+        "/whatsapp-business-automation-trinidad",
+        "/privacy-policy",
+        "/terms",
+        "/refund-policy"
+      ]
+    })
+  ]
 });
