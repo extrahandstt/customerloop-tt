@@ -15,13 +15,17 @@ import CrmTrinidad from "./pages/seo/CrmTrinidad";
 import CustomerManagementTrinidad from "./pages/seo/CustomerManagementTrinidad";
 import WhatsappAutomationTrinidad from "./pages/seo/WhatsappAutomationTrinidad";
 import BusinessHubTrinidad from "./pages/seo/BusinessHubTrinidad";
+import HowToGetMoreCustomersTrinidad from "./pages/seo/HowToGetMoreCustomersTrinidad";
+import HowToFollowUpWhatsAppTrinidad from "./pages/seo/HowToFollowUpWhatsAppTrinidad";
+import WhyBusinessesLoseCustomersTrinidad from "./pages/seo/WhyBusinessesLoseCustomersTrinidad";
+import Pricing from "./pages/Pricing";
+import Onboarding from "./pages/Onboarding";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landing />} />
-<Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
 <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/customers" element={<Customers />} />
         <Route path="/rules" element={<Rules />} />
@@ -31,6 +35,15 @@ function App() {
 <Route path="/terms" element={<Terms />} />
 <Route path="/business-growth-trinidad" element={<BusinessHubTrinidad />} />
 <Route path="/crm-trinidad" element={<CrmTrinidad />} />
+<Route path="/how-to-get-more-customers-trinidad" element={<HowToGetMoreCustomersTrinidad />} />
+
+<Route path="/how-to-follow-up-customers-whatsapp-trinidad" element={<HowToFollowUpWhatsAppTrinidad />} />
+
+<Route path="/why-businesses-lose-customers-trinidad" element={<WhyBusinessesLoseCustomersTrinidad />} />
+<Route path="/pricing" element={<Pricing />} />
+
+<Route path="/onboarding" element={<Onboarding />} />
+<Route path="/" element={<Landing />} />
 <Route
   path="/customer-management-software-trinidad"
   element={<CustomerManagementTrinidad />}
