@@ -45,7 +45,7 @@ function App() {
 <Route path="/onboarding" element={<Onboarding />} />
 <Route path="/" element={<Landing />} />
 <Route
-  path="/customer-management-software-trinidad"
+  path="/customer-management-trinidad"
   element={<CustomerManagementTrinidad />}
 />
 <Route

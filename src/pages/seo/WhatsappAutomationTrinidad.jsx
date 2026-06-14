@@ -76,7 +76,7 @@ export default function WhatsappAutomationTrinidad() {
       <p>
         <a href="/crm-trinidad">CRM Software Trinidad</a>
         {" | "}
-        <a href="/customer-management-software-trinidad">
+        <a href="/customer-management-trinidad">
           Customer Management Software
         </a>
         {" | "}

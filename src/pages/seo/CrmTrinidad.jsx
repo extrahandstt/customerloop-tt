@@ -83,7 +83,7 @@ export default function CrmTrinidad() {
           WhatsApp Automation Trinidad
         </a>
         {" | "}
-        <a href="/customer-management-software-trinidad">
+        <a href="/customer-management-trinidad">
           Customer Management Software
         </a>
         {" | "}

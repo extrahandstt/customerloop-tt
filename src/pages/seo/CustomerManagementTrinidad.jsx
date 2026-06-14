@@ -38,7 +38,7 @@ export default function CustomerManagementTrinidad() {
   <h3>Explore More</h3>
 
   <a href="/crm-trinidad">CRM Software Trinidad</a><br />
-  <a href="/customer-management-software-trinidad">
+  <a href="/customer-management-trinidad">
     Customer Management Software
   </a><br />
   <a href="/whatsapp-business-automation-trinidad">

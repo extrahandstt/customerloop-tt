@@ -10,11 +10,11 @@
   </url>
 
   <url>
-    <loc>https://customerloop-tt.vercel.app/customer-management-trinidad</loc>
+    <loc>https://customerloop-tt.vercel.app/business-growth-trinidad</loc>
   </url>
 
   <url>
-    <loc>https://customerloop-tt.vercel.app/business-growth-trinidad</loc>
+    <loc>https://customerloop-tt.vercel.app/customer-management-trinidad</loc>
   </url>
 
   <url>
@@ -22,19 +22,35 @@
   </url>
 
   <url>
-    <loc>https://customerloop-tt.vercel.app/privacy-policy</loc>
+    <loc>https://customerloop-tt.vercel.app/how-to-get-more-customers-trinidad</loc>
   </url>
 
   <url>
-    <loc>https://customerloop-tt.vercel.app/terms</loc>
+    <loc>https://customerloop-tt.vercel.app/how-to-follow-up-customers-whatsapp-trinidad</loc>
   </url>
 
   <url>
-    <loc>https://customerloop-tt.vercel.app/refund-policy</loc>
+    <loc>https://customerloop-tt.vercel.app/why-businesses-lose-customers-trinidad</loc>
   </url>
 
   <url>
     <loc>https://customerloop-tt.vercel.app/pricing</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/onboarding</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/privacy</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/refund</loc>
+  </url>
+
+  <url>
+    <loc>https://customerloop-tt.vercel.app/terms</loc>
   </url>
 
 </urlset>
