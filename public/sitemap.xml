@@ -3,38 +3,56 @@
 
   <url>
     <loc>https://customerloop-tt.vercel.app/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://customerloop-tt.vercel.app/business-growth-trinidad</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://customerloop-tt.vercel.app/crm-trinidad</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://customerloop-tt.vercel.app/customer-management-trinidad</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://customerloop-tt.vercel.app/whatsapp-business-automation-trinidad</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://customerloop-tt.vercel.app/how-to-get-more-customers-trinidad</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://customerloop-tt.vercel.app/how-to-follow-up-customers-whatsapp-trinidad</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://customerloop-tt.vercel.app/why-businesses-lose-customers-trinidad</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://customerloop-tt.vercel.app/pricing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
