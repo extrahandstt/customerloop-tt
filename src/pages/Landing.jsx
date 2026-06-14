@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 
 export default function Landing() {
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", color: "#111" }}>
+    <div style={{ fontFamily: "Arial, sans-serif", color: "#070707" }}>
 
       {/* SEO MUST BE INSIDE COMPONENT */}
       <Helmet>
@@ -80,50 +80,136 @@ export default function Landing() {
       </section>
 
       {/* PROBLEM */}
-      <section style={{ padding: "60px 20px", background: "#f9fafb" }}>
-        <h2 style={{ textAlign: "center" }}>
-          The Problem Most Businesses Don’t Notice
-        </h2>
+<section
+  style={{
+    padding: "60px 20px",
+    background: "#172139",
+    color: "#ffffff",
+  }}
+>
+  <h2
+    style={{
+      textAlign: "center",
+      fontSize: "clamp(24px, 6vw, 34px)",
+      fontWeight: "800",
+      lineHeight: "1.3",
+      marginBottom: "20px",
+      color: "#ffffff",
+    }}
+  >
+    The Problem Most Businesses Don’t Notice
+  </h2>
 
-        <div style={{ maxWidth: "800px", margin: "30px auto", lineHeight: "1.8" }}>
-          <p>❌ Customers visit once and never return</p>
-          <p>❌ No system to follow up with customers</p>
-          <p>❌ Lost sales every week</p>
-        </div>
-      </section>
+  <div
+    style={{
+      maxWidth: "800px",
+      margin: "30px auto",
+      lineHeight: "1.8",
+      fontSize: "clamp(16px, 3vw, 18px)",
+    }}
+  >
+    <p>❌ Customers visit once and never return</p>
+    <p>❌ No system to follow up with customers</p>
+    <p>❌ Lost sales every week</p>
+  </div>
+</section>
 
-      {/* SOLUTION */}
-      <section style={{ padding: "60px 20px" }}>
-        <h2 style={{ textAlign: "center" }}>
-          CustomerLoop Fixes This Automatically
-        </h2>
+{/* SOLUTION */}
+<section style={{ padding: "60px 20px", background: "#ffffff" }}>
+  <h2
+    style={{
+      textAlign: "center",
+      fontSize: "clamp(24px, 6vw, 34px)",
+      fontWeight: "800",
+      lineHeight: "1.3",
+      marginBottom: "20px",
+      color: "#111111",
+    }}
+  >
+    CustomerLoop Fixes This Automatically
+  </h2>
 
-        <div style={{ maxWidth: "800px", margin: "30px auto", lineHeight: "1.8" }}>
-          <p>✔ Add a customer once</p>
-          <p>✔ Get automatic follow-up reminders</p>
-          <p>✔ Track all customers in one place</p>
-          <p>✔ Send WhatsApp reminders easily</p>
-        </div>
-      </section>
+  <div
+    style={{
+      maxWidth: "800px",
+      margin: "30px auto",
+      lineHeight: "1.8",
+      fontSize: "clamp(16px, 3vw, 18px)",
+      color: "#333333",
+    }}
+  >
+    <p>✔ Add a customer once</p>
+    <p>✔ Get automatic follow-up reminders</p>
+    <p>✔ Track all customers in one place</p>
+    <p>✔ Send WhatsApp reminders easily</p>
+  </div>
+</section>
 
-      {/* HOW IT WORKS */}
-      <section style={{ padding: "60px 20px", background: "#f9fafb" }}>
-        <h2 style={{ textAlign: "center" }}>How It Works</h2>
+{/* HOW IT WORKS */}
+<section
+  style={{
+    padding: "60px 20px",
+    background: "#172139",
+    color: "#ffffff",
+  }}
+>
+  <h2
+    style={{
+      textAlign: "center",
+      fontSize: "clamp(24px, 6vw, 34px)",
+      fontWeight: "800",
+      lineHeight: "1.3",
+      marginBottom: "20px",
+      color: "#ffffff",
+    }}
+  >
+    How It Works
+  </h2>
 
-        <div style={{ maxWidth: "700px", margin: "30px auto" }}>
-          <p>1. Add customer</p>
-          <p>2. Set follow-up timing</p>
-          <p>3. Get daily reminders</p>
-        </div>
-      </section>
+  <div
+    style={{
+      maxWidth: "700px",
+      margin: "30px auto",
+      lineHeight: "1.8",
+      fontSize: "clamp(16px, 3vw, 18px)",
+    }}
+  >
+    <p>1. Add customer</p>
+    <p>2. Set follow-up timing</p>
+    <p>3. Get daily reminders</p>
+  </div>
+</section>
 
-      {/* WHO IT'S FOR */}
-      <section style={{ padding: "60px 20px", textAlign: "center" }}>
-        <h2>Built for Small Businesses</h2>
-        <p>
-          Barbers • Salons • Shops • Car Washes • Freelancers • Service Providers
-        </p>
-      </section>
+{/* WHO IT'S FOR */}
+<section
+  style={{
+    padding: "60px 20px",
+    textAlign: "center",
+    background: "#ffffff",
+  }}
+>
+  <h2
+    style={{
+      fontSize: "clamp(24px, 6vw, 34px)",
+      fontWeight: "800",
+      lineHeight: "1.3",
+      marginBottom: "20px",
+      color: "#111111",
+    }}
+  >
+    Built for Small Businesses
+  </h2>
+
+  <p
+    style={{
+      fontSize: "clamp(16px, 3vw, 18px)",
+      color: "#333333",
+      lineHeight: "1.8",
+    }}
+  >
+    Barbers • Salons • Shops • Car Washes • Freelancers • Service Providers
+  </p>
+</section>
 
       {/* PRICING */}
       <section style={{ padding: "60px 20px", background: "#18233d", color: "white", textAlign: "center" }}>
