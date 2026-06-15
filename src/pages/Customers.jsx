@@ -400,9 +400,9 @@ const saveCustomer = async () => {
 
   {/* ADD CUSTOMER CARD WRAPPER */}
   <div className="card" style={{ marginBottom: "20px" }}>
-  <h2 style={{ marginBottom: "15px" }}>
-    Add New Customer
-  </h2>
+  <h2 style={ui.sectionTitle}>
+  Add New Customer
+</h2>
 
   <input
     placeholder="Customer Name"
@@ -508,9 +508,9 @@ const saveCustomer = async () => {
   background: "#f9fafb"
 }}>
 
-  <h2 style={{ marginBottom: "10px" }}>
-    📥 Bulk Import Customers
-  </h2>
+  <h2 style={ui.sectionTitle}>
+  📥 Bulk Import Customers
+</h2>
 
   <p style={{ marginBottom: "20px", color: "#1f2937" }}>
     Quickly add multiple customers using paste or CSV upload.
@@ -531,7 +531,9 @@ const saveCustomer = async () => {
       border: "1px solid #eee"
     }}>
 
-      <h3>✍️ Paste Customers</h3>
+      <h3 style={ui.subTitle}>
+  ✍️ Paste Customers
+</h3>
 
       <label style={{ fontSize: "12px", color: "#111827" }}>
         Format: Name, Phone
@@ -544,7 +546,8 @@ const saveCustomer = async () => {
         fontSize: "12px",
         marginTop: "10px"
       }}>
-John Smith,8681234567
+John Smith,
+8681234567
       </pre>
 
       <label style={{ display: "block", marginTop: "10px" }}>
@@ -617,7 +620,15 @@ Jane Doe,8687654321`}
       border: "1px solid #eee"
     }}>
 
-      <h3>📁 Upload CSV File</h3>
+      <h3
+  style={{
+    color: "#111827",
+    fontWeight: "700",
+    marginBottom: "12px",
+  }}
+>
+  📁 Upload CSV File
+</h3>
 
       <p style={{ fontSize: "12px", color: "#111827" }}>
         Upload a spreadsheet with columns:
@@ -630,7 +641,8 @@ Jane Doe,8687654321`}
         borderRadius: "6px",
         fontSize: "12px"
       }}>
-John Smith,8681234567
+John Smith,
+8681234567
       </pre>
 
       <input
@@ -674,9 +686,16 @@ John Smith,8681234567
     gap: "10px"
   }}>
     
-    <h2 style={{ margin: 0 }}>
-      Customers ({customers.length})
-    </h2>
+    <h2
+  style={{
+    margin: 0,
+    color: "#111827",
+    fontWeight: "700",
+    fontSize: "24px",
+  }}
+>
+  Customers ({customers.length})
+</h2>
 
     <input
       placeholder="Search customers..."

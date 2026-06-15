@@ -98,4 +98,22 @@ actionGrid: {
   gap: "12px",
   marginTop: "20px",
 },
+sectionTitle: {
+  color: "#111827",
+  fontWeight: "700",
+  fontSize: "22px",
+  marginBottom: "15px",
+},
+
+subTitle: {
+  color: "#111827",
+  fontWeight: "600",
+  fontSize: "18px",
+},
+sectionTitle: {
+  fontSize: "22px",
+  fontWeight: "700",
+  color: "#111827",
+  marginBottom: "12px",
+},
 };

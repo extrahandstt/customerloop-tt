@@ -231,7 +231,9 @@ const useTemplate = async (c) => {
 
     {/* 🟡 RECOMMENDED (LESS DOMINANT) */}
     <div className="card" style={{ background: "#f9fafb" }}>
-      <h2>Recommended Campaigns</h2>
+      <h2 style={ui.sectionTitle}>
+  Recommended Campaigns
+</h2>
       <p style={{ fontSize: "13px", color: "#666" }}>
         Quick-start templates you can use instantly
       </p>
@@ -255,8 +257,9 @@ const useTemplate = async (c) => {
 
     {/* 🔵 MAIN SECTION */}
     <div className="card">
-      <h2>Your Campaigns</h2>
-
+      <h2 style={ui.sectionTitle}>
+  Your Campaigns
+</h2>
       {rules.length === 0 && (
         <p style={{ color: "#777" }}>No campaigns created yet.</p>
       )}
@@ -340,7 +343,9 @@ const useTemplate = async (c) => {
 
     {showForm && (
       <div className="card">
-        <h2>Create Campaign</h2>
+        <h2 style={ui.sectionTitle}>
+  Create Campaign
+</h2>
 
         <input
           placeholder="Campaign Name"

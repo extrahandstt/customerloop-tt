@@ -163,15 +163,39 @@ const isTrialActive = (trialStart) => {
 >
 
         <div
-  style={{
+    style={{
     ...ui.card,
     width: "100%",
     maxWidth: "420px",
+width: "100%",
+margin: "0 auto",
+    padding: "24px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "14px",
   }}
 >
-          <h2 style={ui.sectionTitle}>
+          <h2
+  style={{
+    color: "#111827",
+    fontWeight: "700",
+    fontSize: "28px",
+    marginBottom: "10px",
+    textAlign: "center",
+  }}
+>
   {isSignup ? "Create Account" : "Login"}
 </h2>
+<p
+  style={{
+    textAlign: "center",
+    color: "#4b5563",
+    fontSize: "14px",
+    marginBottom: "20px",
+  }}
+>
+  Access your customer follow-up dashboard
+</p>
 {isSignup && (
   <input
   style={ui.input}

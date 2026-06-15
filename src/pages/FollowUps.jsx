@@ -304,18 +304,44 @@ const sendNextSelected = () => {
     Daily tasks to reconnect with customers and drive repeat business.
   </p>
 </div>
-<div className="card">
-  <h2>Today's Customer Actions</h2>
+<div
+  className="card"
+  style={{
+    textAlign: "center",
+  }}
+>
+  <h2
+    style={{
+      color: "#111827",
+      fontWeight: "700",
+      fontSize: "20px",
+      marginBottom: "12px",
+    }}
+  >
+    Today's Customer Actions
+  </h2>
 
-  <h1>
+  <h1
+    style={{
+      color: "#111827",
+      fontSize: "42px",
+      fontWeight: "800",
+      margin: "0",
+    }}
+  >
     {overdue.length + today.length}
   </h1>
 
-  <p>
+  <p
+    style={{
+      color: "#4b5563",
+      fontSize: "14px",
+      marginTop: "8px",
+    }}
+  >
     Customers to contact today
   </p>
 </div>
-
       <div>
 
   {/* 🔘 BULK ACTION CONTROL (TOP LEVEL) */}
