@@ -5,13 +5,7 @@ import { Helmet } from "react-helmet-async";
 
 
 export default function Rules() {
-  <Helmet>
-  <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
-  <meta
-    name="description"
-    content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
-  />
-</Helmet>
+ 
 
   const [rules, setRules] = useState([]);
 
@@ -183,7 +177,14 @@ const useTemplate = async (c) => {
 };
   return (
   <div className="page">
-
+<Helmet>
+    <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
+    <meta
+      name="description"
+      content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
+    />
+  </Helmet>
+  
     <Navbar />
 
     {/* 🟢 HEADER */}

@@ -1,7 +1,12 @@
 import { useState } from "react";
 
 export default function Onboarding() {
-  <Helmet>
+  
+  const [step, setStep] = useState(1);
+
+  return (
+    <div style={{ maxWidth: "700px", margin: "0 auto", padding: "20px" }}>
+      <Helmet>
     <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
     <meta
       name="description"
@@ -9,11 +14,6 @@ export default function Onboarding() {
     />
   </Helmet>
   
-  const [step, setStep] = useState(1);
-
-  return (
-    <div style={{ maxWidth: "700px", margin: "0 auto", padding: "20px" }}>
-      
       <h1>Welcome to CustomerLoop TT</h1>
 
       {step === 1 && (

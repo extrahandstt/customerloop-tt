@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet-async";
 import Papa from "papaparse";
+import { ui } from "../styles/ui";
 
 
 
@@ -376,7 +377,7 @@ const saveCustomer = async () => {
   alert("Customer updated!");
 };
   return (
-    <div style={{ padding: "30px" }}>
+      <div style={ui.page}>
 
   <div
   style={{
@@ -441,11 +442,11 @@ const saveCustomer = async () => {
     <option value="Appointment">📅 Appointment</option>
   </select>
 
-  <label style={{ display: "block", marginBottom: "5px", fontWeight: "600" }}>
+  <label style={{ display: "block", marginBottom: "5px", fontWeight: "700" }}>
   Last Interaction Date
 </label>
 
-<p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "#666" }}>
+<p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "#111827" }}>
   Select the last time you spoke with or served this customer.
 </p>
 
@@ -481,7 +482,7 @@ const saveCustomer = async () => {
   onChange={(e) => setNextFollowUpDate(e.target.value)}
 />
 
-<p style={{ fontSize: "12px", color: "#666" }}>
+<p style={{ fontSize: "12px", color: "#111827" }}>
   Automatically suggested based on customer type.
 </p>
   <br /><br />
@@ -501,7 +502,7 @@ const saveCustomer = async () => {
 </div>
  <div style={{
   marginTop: "30px",
-  padding: "20px",
+  padding: "16px",
   border: "1px solid #e5e7eb",
   borderRadius: "12px",
   background: "#f9fafb"
@@ -511,14 +512,14 @@ const saveCustomer = async () => {
     📥 Bulk Import Customers
   </h2>
 
-  <p style={{ marginBottom: "20px", color: "#555" }}>
+  <p style={{ marginBottom: "20px", color: "#1f2937" }}>
     Quickly add multiple customers using paste or CSV upload.
   </p>
 
   {/* TWO COLUMN LAYOUT */}
   <div style={{
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
+    gridTemplateColumns: "repeat(auto-fit, minmax(90px, 1fr))",
     gap: "20px"
   }}>
 
@@ -532,7 +533,7 @@ const saveCustomer = async () => {
 
       <h3>✍️ Paste Customers</h3>
 
-      <label style={{ fontSize: "12px", color: "#666" }}>
+      <label style={{ fontSize: "12px", color: "#111827" }}>
         Format: Name, Phone
       </label>
 
@@ -544,8 +545,6 @@ const saveCustomer = async () => {
         marginTop: "10px"
       }}>
 John Smith,8681234567
-Jane Doe,8687654321
-Mike Jones,8685551234
       </pre>
 
       <label style={{ display: "block", marginTop: "10px" }}>
@@ -589,13 +588,7 @@ Mike Jones,8685551234
         onChange={(e) => setBulkText(e.target.value)}
         placeholder={`John Smith,8681234567
 Jane Doe,8687654321`}
-        style={{
-          width: "100%",
-          marginTop: "10px",
-          padding: "10px",
-          borderRadius: "8px",
-          border: "1px solid #ddd"
-        }}
+        style={ui.input}
       />
 
       <button
@@ -626,7 +619,7 @@ Jane Doe,8687654321`}
 
       <h3>📁 Upload CSV File</h3>
 
-      <p style={{ fontSize: "12px", color: "#666" }}>
+      <p style={{ fontSize: "12px", color: "#111827" }}>
         Upload a spreadsheet with columns:
         name and phone 
       </p>
@@ -638,7 +631,6 @@ Jane Doe,8687654321`}
         fontSize: "12px"
       }}>
 John Smith,8681234567
-Jane Doe,8687654321
       </pre>
 
       <input
@@ -658,7 +650,7 @@ Jane Doe,8687654321
       <div style={{
         marginTop: "15px",
         fontSize: "12px",
-        color: "#666",
+        color: "#111827",
         lineHeight: "1.5"
       }}>
         ✔ Faster onboarding for new clients<br/>
@@ -706,18 +698,7 @@ Jane Doe,8687654321
       .includes(search.toLowerCase())
   )
   .map((customer) => (
-    <div
-      key={customer.id}
-      style={{
-        background: "#fff",
-        border: "1px solid #e5e7eb",
-        borderRadius: "12px",
-        padding: "12px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "8px"
-      }}
-    >
+    <div key={customer.id} style={ui.card}>
 
       {/* NAME + TAG ROW */}
       <div style={{
@@ -762,12 +743,7 @@ Jane Doe,8687654321
       </p>
 
       {/* ACTION BUTTONS (COMPACT GRID) */}
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "6px",
-        marginTop: "6px"
-      }}>
+<div style={ui.buttonGrid}>
 
         <button onClick={() =>
           navigate(`/customer/${customer.id}`)
@@ -796,11 +772,7 @@ Jane Doe,8687654321
 
         <button
           onClick={() => deleteCustomer(customer.id)}
-          style={{
-            background: "#dc2626",
-            color: "white",
-            gridColumn: "span 2"
-          }}
+          style={{ ...ui.primaryButton, ...ui.dangerButton }}
         >
           Delete
         </button>

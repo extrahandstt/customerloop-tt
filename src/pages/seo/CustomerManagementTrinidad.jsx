@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 export default function CustomerManagementTrinidad() {
   return (
     <div style={{ padding: "40px", fontFamily: "Arial" }}>
-
+<Helmet>
+    <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
+    <meta
+      name="description"
+      content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
+    />
+  </Helmet>
+  
       <h1>Customer Management Software Trinidad & Tobago</h1>
 
       <p>

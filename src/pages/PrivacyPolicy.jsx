@@ -2,16 +2,17 @@ import { Helmet } from "react-helmet-async";
 
 
 export default function PrivacyPolicy() {
-  <Helmet>
-  <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
-  <meta
-    name="description"
-    content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
-  />
-</Helmet>
-
+  
   return (
     <div style={{ padding: "40px", maxWidth: "800px", margin: "auto", lineHeight: "1.6" }}>
+      <Helmet>
+    <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
+    <meta
+      name="description"
+      content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
+    />
+  </Helmet>
+  
       <h1>Privacy Policy</h1>
 
       <p>

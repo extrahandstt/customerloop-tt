@@ -1,7 +1,7 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
-
+import { ui } from "../styles/ui";
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -51,7 +51,17 @@ export default function Navbar() {
             fontSize: "16px"
           }}
         >
-          CustomerLoop TT
+          <div
+  onClick={() => navigate("/dashboard")}
+  style={{
+    fontWeight: "800",
+    cursor: "pointer",
+    fontSize: "18px",
+    color: "#111827",
+  }}
+>
+  🔄 CustomerLoop TT
+</div>
         </div>
 
         {/* DESKTOP NAV */}
@@ -70,47 +80,56 @@ export default function Navbar() {
 
         {/* HAMBURGER BUTTON (MOBILE) */}
         <button
-          onClick={() => setOpen(!open)}
-          style={{
-            display: "none",
-            fontSize: "20px",
-            background: "none",
-            border: "none",
-            cursor: "pointer"
-          }}
-          className="hamburger"
-        >
-          ☰
-        </button>
+  onClick={() => setOpen(!open)}
+  style={{
+    fontSize: "22px",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    color: "#111827",
+    display: "block"
+  }}
+  className="hamburger"
+>
+  ☰
+</button>
 
-        {/* RIGHT ACTIONS */}
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <Link
-            to="/updates"
-            style={{
-              fontSize: "13px",
-              color: "#6b7280",
-              textDecoration: "none"
-            }}
-          >
-            Updates
-          </Link>
+        {/* DESKTOP ACTIONS */}
+<div
+  className="desktop-actions"
+  style={{
+    display: "flex",
+    gap: "10px",
+    alignItems: "center",
+  }}
+>
+  <Link
+    to="/updates"
+    style={{
+      fontSize: "13px",
+      color: "#6b7280",
+      textDecoration: "none",
+      fontWeight: "600",
+    }}
+  >
+    Updates
+  </Link>
 
-          <button
-            onClick={logout}
-            style={{
-              background: "#111827",
-              color: "white",
-              border: "none",
-              padding: "7px 12px",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontSize: "13px"
-            }}
-          >
-            Logout
-          </button>
-        </div>
+  <button
+    onClick={logout}
+    style={{
+      background: "#111827",
+      color: "white",
+      border: "none",
+      padding: "8px 14px",
+      borderRadius: "8px",
+      cursor: "pointer",
+      fontWeight: "600",
+    }}
+  >
+    Logout
+  </button>
+</div>
       </div>
 
       {/* MOBILE MENU */}
@@ -129,7 +148,21 @@ export default function Navbar() {
           <Link to="/followups" onClick={() => setOpen(false)} style={linkStyle("/followups")}>Follow Ups</Link>
           <Link to="/rules" onClick={() => setOpen(false)} style={linkStyle("/rules")}>Campaigns</Link>
           <Link to="/updates" onClick={() => setOpen(false)} style={linkStyle("/updates")}>Updates</Link>
-
+<button
+  onClick={logout}
+  style={{
+    background: "#dc2626",
+    color: "white",
+    border: "none",
+    padding: "12px",
+    borderRadius: "8px",
+    cursor: "pointer",
+    marginTop: "10px",
+    fontWeight: "600",
+  }}
+>
+  Logout
+</button>
         </div>
       )}
 
@@ -137,14 +170,27 @@ export default function Navbar() {
       <style>
         {`
           @media (max-width: 768px) {
-            .desktop-nav {
-              display: none !important;
-            }
+  .desktop-nav {
+    display: none !important;
+  }
 
-            .hamburger {
-              display: block !important;
-            }
-          }
+  .desktop-actions {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: block !important;
+    font-size: 28px;
+    color: #111827;
+    padding: 6px;
+  }
+}
+
+@media (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
+}
         `}
       </style>
 

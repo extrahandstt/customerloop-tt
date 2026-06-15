@@ -2,18 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { Helmet } from "react-helmet-async";
-
+import { ui } from "../styles/ui";
 
 
 export default function Login() {
-  <Helmet>
-  <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
-  <meta
-    name="description"
-    content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
-  />
-</Helmet>
-
+  
     const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -93,14 +86,50 @@ const isTrialActive = (trialStart) => {
   return diffDays <= 14;
 };
   return (
-    <div style={styles.container}>
+    <div
+  style={{
+    minHeight: "100vh",
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+      <Helmet>
+  <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
+  <meta
+    name="description"
+    content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
+  />
+</Helmet>
 
       {/* LEFT SIDE */}
-      <div style={styles.left}>
-        <h1 style={{ fontSize: "42px", fontWeight: "800", color: "#f2f2f2" }}>
+      <div
+  style={{
+    flex: 1,
+    minWidth: "320px",
+    background: "#0f172a",
+    color: "white",
+    padding: "30px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  }}
+>
+        <h1
+  style={{
+    fontSize: "clamp(32px, 6vw, 48px)",
+    fontWeight: "800",
+    color: "#fff",
+  }}
+>
   Customer Loop TT
 </h1>
-        <h2 style={{ fontSize: "22px", fontWeight: "500", color: "#cfcfcf", lineHeight: "1.4" }}>
+        <h2
+  style={{
+    fontSize: "clamp(18px,4vw,24px)",
+    lineHeight: "1.5",
+    color: "#cbd5e1",
+  }}
+>
   Never forget to follow up with a customer again
 </h2>
         <p style={{ color: "#bdbdbd", lineHeight: "1.6" }}>
@@ -121,12 +150,31 @@ const isTrialActive = (trialStart) => {
       </div>
 
       {/* RIGHT SIDE */}
-      <div style={styles.right}>
+      <div
+  style={{
+    flex: 1,
+    minWidth: "320px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "#f8fafc",
+    padding: "20px",
+  }}
+>
 
-        <div style={styles.card}>
-          <h2>{isSignup ? "Create Account" : "Login"}</h2>
+        <div
+  style={{
+    ...ui.card,
+    width: "100%",
+    maxWidth: "420px",
+  }}
+>
+          <h2 style={ui.sectionTitle}>
+  {isSignup ? "Create Account" : "Login"}
+</h2>
 {isSignup && (
   <input
+  style={ui.input}
     placeholder="Business Name"
     value={businessName}
         onChange={(e) => setBusinessName(e.target.value)}
@@ -135,6 +183,7 @@ const isTrialActive = (trialStart) => {
 )}
 {isSignup && (
   <select
+  style={ui.select}
     value={businessType}
     onChange={(e) => setBusinessType(e.target.value)}
   >
@@ -148,19 +197,24 @@ const isTrialActive = (trialStart) => {
   </select>
 )}
           <input
+  style={ui.input}
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
 
           <input
+  style={ui.input}
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button onClick={handleAuth}>
+          <button
+  style={ui.button}
+  onClick={handleAuth}
+>
             {isSignup ? "Sign Up" : "Login"}
           </button>
 
@@ -201,7 +255,7 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "#f5f5f5",
+    background: "#f7f3f3",
   },
 
   card: {

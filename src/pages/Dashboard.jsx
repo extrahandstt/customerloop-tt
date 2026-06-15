@@ -3,18 +3,12 @@ import { supabase } from "../lib/supabase";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { ui } from "../styles/ui";
 
 
 
 export default function Dashboard() {
-  <Helmet>
-  <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
-  <meta
-    name="description"
-    content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
-  />
-</Helmet>
-
+  
   const navigate = useNavigate();
 
 const handleLogout = async () => {
@@ -42,6 +36,17 @@ const toggleReminders = () => {
   setDailyReminders(newValue);
   localStorage.setItem("daily_reminders", newValue);
 };
+const isTrialActive = (trialStart) => {
+  if (!trialStart) return false;
+
+  const start = new Date(trialStart);
+  const today = new Date();
+
+  const diffDays =
+    (today - start) / (1000 * 60 * 60 * 24);
+
+  return diffDays <= 14;
+};
   useEffect(() => {
     fetchStats();
   }, []);
@@ -52,6 +57,7 @@ const toggleReminders = () => {
     }
   }
 }, []);
+
 useEffect(() => {
   const checkTrial = async () => {
     const { data: { user } } = await supabase.auth.getUser();
@@ -126,6 +132,13 @@ setBusinessName(
 
   return (
   <div className="page">
+    <Helmet>
+  <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
+  <meta
+    name="description"
+    content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
+  />
+</Helmet>
     <div style={{
   background: "#fef3c7",
   padding: "10px",
@@ -139,7 +152,8 @@ setBusinessName(
   style={{
     padding: "26px 20px",
     borderRadius: "12px",
-    background: "linear-gradient(135deg, #1c263a)",
+    background:
+"linear-gradient(135deg,#0f172a,#1e293b,#334155)",
     color: "white",
     marginBottom: "20px",
     position: "relative",
@@ -163,14 +177,12 @@ setBusinessName(
   Logout
 </button>
   <h1
-    style={{
-      margin: 0,
-      fontSize: "24px",
-      fontWeight: "700",
-      letterSpacing: "0.2px",
-    }}
-    
-  >
+  style={{
+    margin: 0,
+    fontSize: "clamp(24px,5vw,34px)",
+    fontWeight: "800",
+  }}
+>
     Welcome{businessName ? `, ${businessName}` : ""} 👋
   </h1>
 
@@ -202,104 +214,251 @@ setBusinessName(
   
 </div>
     {/* 🟡 TODAY INTELLIGENCE (ONLY ONE BLOCK) */}
-    <div className="card" style={{ marginBottom: "20px" }}>
-      <h2>Today’s Overview</h2>
-
-      <p>
-        👥 Customers: <strong>{stats.customers}</strong>
-      </p>
-
-      <p>
-        🚨 Overdue: <strong>{stats.overdue}</strong>
-      </p>
-
-      <p>
-        📅 Today: <strong>{stats.today}</strong>
-      </p>
-
-      <p>
-        ⏳ Upcoming: <strong>{stats.upcoming}</strong>
-      </p>
-
-      <hr />
-
-      {/* SMART MESSAGE */}
-      {stats.overdue > 0 ? (
-        <p style={{ color: "#b91c1c", fontWeight: "600" }}>
-          You should start with overdue follow-ups today.
-        </p>
-      ) : stats.today > 0 ? (
-        <p style={{ color: "#92400e", fontWeight: "600" }}>
-          Focus on today’s follow-ups.
-        </p>
-      ) : (
-        <p style={{ color: "#166534", fontWeight: "600" }}>
-          🎉 You're all caught up.
-        </p>
-      )}
-    </div>
-
-    {/* 🔵 ACTION GRID */}
     <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-        gap: "15px",
-      }}
-    >
-      <Link to="/customers" style={{ textDecoration: "none" }}>
-        <div className="card" style={{ cursor: "pointer" }}>
-          <h3>👥 Customers</h3>
-          <p>Add and manage customer profiles</p>
-        </div>
-      </Link>
-
-      <Link to="/followups" style={{ textDecoration: "none" }}>
-        <div className="card" style={{ cursor: "pointer" }}>
-          <h3>📅 Follow-ups</h3>
-          <p>See who needs attention today</p>
-        </div>
-      </Link>
-
-      <Link to="/rules" style={{ textDecoration: "none" }}>
-        <div className="card" style={{ cursor: "pointer" }}>
-          <h3>📩 Campaigns</h3>
-          <p>Automate customer messages</p>
-        </div>
-      </Link>
-    </div>
-<div
   style={{
-    marginTop: "25px",
-    paddingTop: "15px",
-    borderTop: "1px solid #e5e7eb",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(170px,1fr))",
+    gap: "12px",
+    marginBottom: "20px",
   }}
 >
-  <div>
+
+  <div className="card">
     <div style={{ fontSize: "12px", color: "#6b7280" }}>
-      System preferences
+      Customers
     </div>
 
-    <div style={{ fontSize: "13px", fontWeight: "600" }}>
-     🔔 Daily reminders
+    <div
+      style={{
+        fontSize: "32px",
+        fontWeight: "700",
+      }}
+    >
+      {stats.customers}
     </div>
   </div>
 
-  <input
-    type="checkbox"
-    checked={dailyReminders}
-    onChange={toggleReminders}
+  <div
+    className="card"
     style={{
-      width: "18px",
-      height: "18px",
-      cursor: "pointer",
-      accentColor: "#10b981",
+      borderLeft: "4px solid #dc2626",
     }}
-  />
+  >
+    <div style={{ fontSize: "12px", color: "#6b7280" }}>
+      Overdue
+    </div>
+
+    <div
+      style={{
+        fontSize: "32px",
+        fontWeight: "700",
+        color: "#dc2626",
+      }}
+    >
+      {stats.overdue}
+    </div>
+  </div>
+
+  <div
+    className="card"
+    style={{
+      borderLeft: "4px solid #f59e0b",
+    }}
+  >
+    <div style={{ fontSize: "12px", color: "#6b7280" }}>
+      Today
+    </div>
+
+    <div
+      style={{
+        fontSize: "32px",
+        fontWeight: "700",
+        color: "#f59e0b",
+      }}
+    >
+      {stats.today}
+    </div>
+  </div>
+
+  <div
+    className="card"
+    style={{
+      borderLeft: "4px solid #10b981",
+    }}
+  >
+    <div style={{ fontSize: "12px", color: "#6b7280" }}>
+      Upcoming
+    </div>
+
+    <div
+      style={{
+        fontSize: "32px",
+        fontWeight: "700",
+        color: "#10b981",
+      }}
+    >
+      {stats.upcoming}
+    </div>
+  </div>
+
 </div>
+<div
+  className="card"
+  style={{
+    marginBottom: "20px",
+    background:
+      stats.overdue > 0
+        ? "#fef2f2"
+        : stats.today > 0
+        ? "#fffbeb"
+        : "#ecfdf5",
+  }}
+>
+  {stats.overdue > 0 ? (
+    <strong>
+      🚨 You have {stats.overdue} overdue follow-ups.
+    </strong>
+  ) : stats.today > 0 ? (
+    <strong>
+      📅 You have {stats.today} follow-ups due today.
+    </strong>
+  ) : (
+    <strong>
+      🎉 All customer follow-ups are up to date.
+    </strong>
+  )}
+</div>
+    {/* 🔵 ACTION GRID */}
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+    gap: "16px",
+    marginBottom: "20px",
+  }}
+>
+  {/* CUSTOMERS */}
+  <Link to="/customers" style={{ textDecoration: "none" }}>
+    <div
+      className="card"
+      style={{
+        cursor: "pointer",
+        transition: "0.2s",
+        minHeight: "120px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
+      <h3>👥 Customers</h3>
+      <p>Add and manage customer profiles</p>
+    </div>
+  </Link>
+
+  {/* FOLLOW UPS */}
+  <Link to="/followups" style={{ textDecoration: "none" }}>
+    <div
+      className="card"
+      style={{
+        cursor: "pointer",
+        transition: "0.2s",
+        minHeight: "120px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
+      <h3>📅 Follow-ups</h3>
+      <p>See who needs attention today</p>
+    </div>
+  </Link>
+
+  {/* CAMPAIGNS */}
+  <Link to="/rules" style={{ textDecoration: "none" }}>
+    <div
+      className="card"
+      style={{
+        cursor: "pointer",
+        transition: "0.2s",
+        minHeight: "120px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
+      <h3>📩 Campaigns</h3>
+      <p>Automate customer messages</p>
+    </div>
+  </Link>
+</div>
+<div
+  className="card"
+  style={{
+    marginTop: "20px",
+  }}
+>
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+    }}
+  >
+    <div>
+      <div
+        style={{
+          fontWeight: "700",
+        }}
+      >
+        🔔 Daily Reminders
+      </div>
+
+      <div
+        style={{
+          fontSize: "13px",
+          color: "#6b7280",
+        }}
+      >
+        Receive daily follow-up notifications.
+      </div>
+    </div>
+
+    <input
+      type="checkbox"
+      checked={dailyReminders}
+      onChange={toggleReminders}
+      style={{
+        width: "20px",
+        height: "20px",
+        accentColor: "#10b981",
+      }}
+    />
+  </div>
+</div>
+<a
+  href="https://wa.me/18687326795?text=Hi%20I%20need%20help%20with%20CustomerLoop%20TT"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    position: "fixed",
+    bottom: "18px",
+    right: "18px",
+    background: "#25D366",
+    color: "white",
+    width: "55px",
+    height: "55px",
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "26px",
+    boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+    zIndex: 9999,
+    textDecoration: "none",
+  }}
+>
+  💬
+</a>
   </div>
 );
   
