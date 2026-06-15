@@ -3,21 +3,25 @@ import { supabase } from "../lib/supabase";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet-async";
+import Papa from "papaparse";
 
-<Helmet>
+
+
+export default function Customers() {
+  <Helmet>
   <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
   <meta
     name="description"
     content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
   />
 </Helmet>
-
-export default function Customers() {
-  const [customers, setCustomers] = useState([]);
-
+    const [customers, setCustomers] = useState([]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [tag, setTag] = useState("New Customer");
+  const [bulkText, setBulkText] = useState("");
+  const [bulkTag, setBulkTag] = useState("New Customer");
+const [bulkDate, setBulkDate] = useState("");
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [lastInteractionDate, setLastInteractionDate] =
@@ -138,6 +142,106 @@ console.log("CUSTOMER CREATED:", customer);
 
   alert("Customer added successfully!");
   console.log("RULES LOADED:", rules);
+};
+const importBulkCustomers = async () => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const { data: rules } = await supabase
+    .from("follow_up_rules")
+    .select("*")
+    .eq("user_id", user.id)
+    .eq("active", true);
+
+  const lines = bulkText
+    .split("\n")
+    .filter((line) => line.trim());
+
+  for (const line of lines) {
+    const [name, phone] = line.split(",");
+
+    const { data: customer, error } =
+      await supabase
+        .from("customers")
+        .insert({
+          user_id: user.id,
+          name: name?.trim(),
+          phone: phone?.trim() || "",
+          tag: bulkTag,
+          last_interaction_date: bulkDate,
+        })
+        .select()
+        .single();
+
+    if (error) continue;
+
+    if (rules?.length) {
+      const tasks = rules.map((rule) => {
+        const dueDate = new Date(bulkDate);
+
+        dueDate.setDate(
+          dueDate.getDate() +
+            rule.days_after
+        );
+
+        return {
+          user_id: user.id,
+          customer_id: customer.id,
+          rule_id: rule.id,
+          due_date: dueDate
+            .toISOString()
+            .split("T")[0],
+          status: "pending",
+        };
+      });
+
+      await supabase
+        .from("follow_up_tasks")
+        .insert(tasks);
+    }
+  }
+
+  setBulkText("");
+  fetchCustomers();
+
+  alert(
+    `${lines.length} customers imported`
+  );
+};
+const handleCSVUpload = async (file) => {
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+  Papa.parse(file, {
+    header: true,
+
+    complete: async (results) => {
+      try {
+        const customers = results.data
+          .filter((row) => row.name)
+          .map((row) => ({
+            name: row.name,
+            phone: row.phone || "",
+            email: row.email || "",
+            user_id: user.id,
+          }));
+
+        const { error } = await supabase
+          .from("customers")
+          .insert(customers);
+
+        if (error) throw error;
+
+        alert(`${customers.length} customers imported`);
+
+        fetchCustomers();
+
+      } catch (err) {
+        alert(err.message);
+      }
+    },
+  });
 };
 const addInteraction = async (customer) => {
   const {
@@ -359,7 +463,7 @@ const saveCustomer = async () => {
       newDate
     )
   );
-}}
+  }}
   style={{
     width: "100%",
     padding: "10px",
@@ -395,20 +499,205 @@ const saveCustomer = async () => {
     : "+ Add Customer"}
 </button>
 </div>
-  <hr />
+ <div style={{
+  marginTop: "30px",
+  padding: "20px",
+  border: "1px solid #e5e7eb",
+  borderRadius: "12px",
+  background: "#f9fafb"
+}}>
 
+  <h2 style={{ marginBottom: "10px" }}>
+    📥 Bulk Import Customers
+  </h2>
+
+  <p style={{ marginBottom: "20px", color: "#555" }}>
+    Quickly add multiple customers using paste or CSV upload.
+  </p>
+
+  {/* TWO COLUMN LAYOUT */}
+  <div style={{
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "20px"
+  }}>
+
+    {/* LEFT SIDE - PASTE */}
+    <div style={{
+      padding: "15px",
+      background: "#fff",
+      borderRadius: "10px",
+      border: "1px solid #eee"
+    }}>
+
+      <h3>✍️ Paste Customers</h3>
+
+      <label style={{ fontSize: "12px", color: "#666" }}>
+        Format: Name, Phone
+      </label>
+
+      <pre style={{
+        background: "#f3f4f6",
+        padding: "10px",
+        borderRadius: "6px",
+        fontSize: "12px",
+        marginTop: "10px"
+      }}>
+John Smith,8681234567
+Jane Doe,8687654321
+Mike Jones,8685551234
+      </pre>
+
+      <label style={{ display: "block", marginTop: "10px" }}>
+        Customer Type
+      </label>
+
+      <select
+        value={bulkTag}
+        onChange={(e) => setBulkTag(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginTop: "5px"
+        }}
+      >
+        <option value="New Customer">🆕 New Customer</option>
+        <option value="Repeat Customer">🔁 Repeat Customer</option>
+        <option value="VIP">⭐ VIP</option>
+        <option value="Retail">🏪 Retail</option>
+        <option value="Appointment">📅 Appointment</option>
+      </select>
+
+      <label style={{ display: "block", marginTop: "10px" }}>
+        Last Interaction Date
+      </label>
+
+      <input
+        type="date"
+        value={bulkDate}
+        onChange={(e) => setBulkDate(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginTop: "5px"
+        }}
+      />
+
+      <textarea
+        rows={8}
+        value={bulkText}
+        onChange={(e) => setBulkText(e.target.value)}
+        placeholder={`John Smith,8681234567
+Jane Doe,8687654321`}
+        style={{
+          width: "100%",
+          marginTop: "10px",
+          padding: "10px",
+          borderRadius: "8px",
+          border: "1px solid #ddd"
+        }}
+      />
+
+      <button
+        onClick={importBulkCustomers}
+        style={{
+          marginTop: "10px",
+          width: "100%",
+          padding: "10px",
+          background: "#111827",
+          color: "white",
+          border: "none",
+          borderRadius: "8px",
+          cursor: "pointer"
+        }}
+      >
+        Import Customers
+      </button>
+
+    </div>
+
+    {/* RIGHT SIDE - CSV */}
+    <div style={{
+      padding: "15px",
+      background: "#fff",
+      borderRadius: "10px",
+      border: "1px solid #eee"
+    }}>
+
+      <h3>📁 Upload CSV File</h3>
+
+      <p style={{ fontSize: "12px", color: "#666" }}>
+        Upload a spreadsheet with columns:
+        name and phone 
+      </p>
+
+      <pre style={{
+        background: "#f3f4f6",
+        padding: "10px",
+        borderRadius: "6px",
+        fontSize: "12px"
+      }}>
+John Smith,8681234567
+Jane Doe,8687654321
+      </pre>
+
+      <input
+        type="file"
+        accept=".csv"
+        onChange={(e) => {
+          if (e.target.files[0]) {
+            handleCSVUpload(e.target.files[0]);
+          }
+        }}
+        style={{
+          marginTop: "10px",
+          width: "100%"
+        }}
+      />
+
+      <div style={{
+        marginTop: "15px",
+        fontSize: "12px",
+        color: "#666",
+        lineHeight: "1.5"
+      }}>
+        ✔ Faster onboarding for new clients<br/>
+        ✔ Works with Excel & Google Sheets<br/>
+        ✔ Perfect for salons, shops, freelancers
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
   {/* CUSTOMER LIST SECTION STARTS HERE */}
   <div style={{ marginTop: "20px" }}>
-  <h2>
-    Customers ({customers.length})
-  </h2>
-  <input
-  placeholder="Search customers..."
-  value={search}
-  onChange={(e) =>
-    setSearch(e.target.value)
-  }
-/>
+
+  <div style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexWrap: "wrap",
+    gap: "10px"
+  }}>
+    
+    <h2 style={{ margin: 0 }}>
+      Customers ({customers.length})
+    </h2>
+
+    <input
+      placeholder="Search customers..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      style={{
+        padding: "10px",
+        borderRadius: "8px",
+        border: "1px solid #ddd",
+        minWidth: "220px"
+      }}
+    />
+  </div>
 </div>
       {customers
   .filter((customer) =>
@@ -417,83 +706,109 @@ const saveCustomer = async () => {
       .includes(search.toLowerCase())
   )
   .map((customer) => (
-  <div key={customer.id} className="card">
-
-    {/* Clickable name → Customer Details */}
-    <h3
-      style={{ cursor: "pointer", color: "blue" }}
-      onClick={() =>
-        navigate(`/customer/${customer.id}`)
-        
-      }
-      
-    >
-      {customer.name}
-    </h3>
-{customer.tag && (
-  <span
-    style={{
-      background: "#eef2ff",
-      color: "#4338ca",
-      padding: "4px 10px",
-      borderRadius: "20px",
-      fontSize: "12px",
-    }}
-  >
-    {customer.tag}
-  </span>
-)}
-    <p>{customer.phone}</p>
-
-    {/* VIEW HISTORY BUTTON */}
-    <button
-      onClick={() =>
-        navigate(`/customer/${customer.id}`)
-      }
-    >
-      View History
-    </button>
-
-    {/* ADD INTERACTION BUTTON (RESTORED) */}
-    <button
-      onClick={() => addInteraction(customer)}
-    >
-      + New Interaction
-    </button>
-
-    {/* OPTIONAL: WHATSAPP */}
-    <button
-      onClick={() => {
-        const cleanPhone =
-          customer.phone.replace(/\D/g, "");
-
-        window.open(
-          `https://wa.me/${cleanPhone}`
-        );
+    <div
+      key={customer.id}
+      style={{
+        background: "#fff",
+        border: "1px solid #e5e7eb",
+        borderRadius: "12px",
+        padding: "12px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "8px"
       }}
     >
-      WhatsApp
-    </button>
-<button
-  onClick={() =>
-    editCustomer(customer)
-  }
->
-  ✏️ Edit
-</button>
-<button
-  onClick={() => deleteCustomer(customer.id)}
-  style={{
-    background: "#dc2626",
-    color: "white",
-    marginLeft: "10px",
-  }}
->
-  Delete
-</button>
-  </div>
-))}
+
+      {/* NAME + TAG ROW */}
+      <div style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
+      }}>
+        
+        <h3
+          onClick={() => navigate(`/customer/${customer.id}`)}
+          style={{
+            margin: 0,
+            cursor: "pointer",
+            fontSize: "16px",
+            color: "#1d4ed8"
+          }}
+        >
+          {customer.name}
+        </h3>
+
+        {customer.tag && (
+          <span style={{
+            background: "#eef2ff",
+            color: "#4338ca",
+            padding: "3px 8px",
+            borderRadius: "999px",
+            fontSize: "11px",
+            whiteSpace: "nowrap"
+          }}>
+            {customer.tag}
+          </span>
+        )}
+      </div>
+
+      {/* PHONE */}
+      <p style={{
+        margin: 0,
+        fontSize: "13px",
+        color: "#555"
+      }}>
+        📞 {customer.phone}
+      </p>
+
+      {/* ACTION BUTTONS (COMPACT GRID) */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "6px",
+        marginTop: "6px"
+      }}>
+
+        <button onClick={() =>
+          navigate(`/customer/${customer.id}`)
+        }>
+          View
+        </button>
+
+        <button onClick={() =>
+          addInteraction(customer)
+        }>
+          + Interaction
+        </button>
+
+        <button onClick={() => {
+          const cleanPhone = customer.phone.replace(/\D/g, "");
+          window.open(`https://wa.me/${cleanPhone}`);
+        }}>
+          WhatsApp
+        </button>
+
+        <button onClick={() =>
+          editCustomer(customer)
+        }>
+          Edit
+        </button>
+
+        <button
+          onClick={() => deleteCustomer(customer.id)}
+          style={{
+            background: "#dc2626",
+            color: "white",
+            gridColumn: "span 2"
+          }}
+        >
+          Delete
+        </button>
+
+      </div>
 
     </div>
+  ))}
+</div>
   );
 }

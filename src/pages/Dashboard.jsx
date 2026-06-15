@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-<Helmet>
+
+
+export default function Dashboard() {
+  <Helmet>
   <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
   <meta
     name="description"
@@ -12,8 +15,6 @@ import { Helmet } from "react-helmet-async";
   />
 </Helmet>
 
-
-export default function Dashboard() {
   const navigate = useNavigate();
 
 const handleLogout = async () => {

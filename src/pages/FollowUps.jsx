@@ -3,15 +3,17 @@ import { supabase } from "../lib/supabase";
 import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
-  <meta
-    name="description"
-    content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
-  />
-</Helmet>
+
 
 export default function FollowUps() {
+  <Helmet>
+    <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
+    <meta
+      name="description"
+      content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
+    />
+  </Helmet>
+  
   const [overdue, setOverdue] = useState([]);
   const [today, setToday] = useState([]);
   const [upcoming, setUpcoming] = useState([]);

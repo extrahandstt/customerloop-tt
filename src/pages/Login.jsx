@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { Helmet } from "react-helmet-async";
 
-<Helmet>
+
+
+export default function Login() {
+  <Helmet>
   <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
   <meta
     name="description"
@@ -11,7 +14,6 @@ import { Helmet } from "react-helmet-async";
   />
 </Helmet>
 
-export default function Login() {
     const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

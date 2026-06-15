@@ -1,13 +1,15 @@
 import { Helmet } from "react-helmet-async";
 
-<Helmet>
+
+export default function RefundPolicy() {
+  <Helmet>
   <title>CRM Software Trinidad & Tobago | CustomerLoop TT</title>
   <meta
     name="description"
     content="CRM software for small businesses in Trinidad & Tobago. Track customers, automate follow-ups, and increase repeat sales."
   />
 </Helmet>
-export default function RefundPolicy() {
+
   return (
     <div style={{ padding: "40px", maxWidth: "800px", margin: "auto", lineHeight: "1.6" }}>
       <h1>Refund Policy</h1>

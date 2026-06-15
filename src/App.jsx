@@ -20,6 +20,7 @@ import HowToFollowUpWhatsAppTrinidad from "./pages/seo/HowToFollowUpWhatsAppTrin
 import WhyBusinessesLoseCustomersTrinidad from "./pages/seo/WhyBusinessesLoseCustomersTrinidad";
 import Pricing from "./pages/Pricing";
 import Onboarding from "./pages/Onboarding";
+import Updates from "./pages/Updates";
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
 
 <Route path="/why-businesses-lose-customers-trinidad" element={<WhyBusinessesLoseCustomersTrinidad />} />
 <Route path="/pricing" element={<Pricing />} />
-
+<Route path="/updates" element={<Updates />} />
 <Route path="/onboarding" element={<Onboarding />} />
 <Route path="/" element={<Landing />} />
 <Route
